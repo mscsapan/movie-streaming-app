@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/constraints.dart';
 import '../utils/utils.dart';
@@ -12,26 +11,34 @@ class MyTheme {
       scaffoldBackgroundColor: scaffoldBgColor,
       // bottomSheetTheme: const BottomSheetThemeData(backgroundColor: whiteColor),
       // colorScheme: const ColorScheme.light(secondary: lightningYellowColor),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: grayBackgroundColor,
         centerTitle: true,
         scrolledUnderElevation: 0.0,
-        titleTextStyle: GoogleFonts.roboto(
-            color: blackColor, fontSize: 20, fontWeight: FontWeight.bold),
-        iconTheme: const IconThemeData(color: blackColor),
+        titleTextStyle: TextStyle(
+            color: blackColor, fontSize: 20.0, fontWeight: FontWeight.bold),
+        iconTheme: IconThemeData(color: blackColor),
         elevation: 0,
       ),
-      textTheme: GoogleFonts.robotoTextTheme(
-        TextTheme(
-          bodySmall: GoogleFonts.roboto(fontSize: 12, height: 1.83),
-          bodyLarge: GoogleFonts.roboto(
-              fontSize: 16, fontWeight: FontWeight.w500, height: 1.375),
-          bodyMedium: GoogleFonts.roboto(fontSize: 14, height: 1.5714),
-          labelLarge: GoogleFonts.roboto(
-              fontSize: 16, height: 2, fontWeight: FontWeight.w600),
-          titleLarge: GoogleFonts.roboto(
-              fontSize: 16, height: 2, fontWeight: FontWeight.w600),
-        ),
+      textTheme: const TextTheme(
+        bodySmall: TextStyle(
+          fontSize: 12, height: 1.83, fontFamily: 'HelveticaNeueMedium',),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          height: 1.375,
+          fontFamily: 'HelveticaNeueMedium',),
+        bodyMedium: TextStyle(
+          fontSize: 14, height: 1.5714, fontFamily: 'HelveticaNeueMedium',),
+        labelLarge: TextStyle(
+          fontSize: 16,
+          height: 2,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'HelveticaNeueMedium',),
+        titleLarge: TextStyle(fontSize: 16,
+          height: 2,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'HelveticaNeueMedium',),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -52,34 +59,37 @@ class MyTheme {
             ),
             padding: WidgetStatePropertyAll(EdgeInsets.zero)),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         elevation: 3,
         backgroundColor: whiteColor,
         showUnselectedLabels: true,
-        selectedLabelStyle: GoogleFonts.roboto(
+        selectedLabelStyle: TextStyle(
           fontWeight: FontWeight.w600,
           color: primaryColor,
           fontSize: 14.0,
         ),
-        unselectedLabelStyle: GoogleFonts.roboto(
+        unselectedLabelStyle: TextStyle(
           fontWeight: FontWeight.w600,
           color: grayColor,
           fontSize: 14.0,
+          fontFamily: 'HelveticaNeueMedium',
         ),
         selectedItemColor: primaryColor,
         unselectedItemColor: grayColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
         isDense: true,
-        hintStyle: GoogleFonts.roboto(
+        hintStyle: const TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16.0,
           color: grayColor,
+          fontFamily: 'HelveticaNeueMedium',
         ),
-        labelStyle: GoogleFonts.roboto(
+        labelStyle: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16.0,
           color: hintTextColor,
+          fontFamily: 'HelveticaNeueMedium',
         ),
         contentPadding: Utils.symmetric(v: 20.0),
         border: OutlineInputBorder(

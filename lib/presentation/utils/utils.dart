@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/models/auth/login_state_model.dart';
@@ -168,137 +166,70 @@ class Utils {
     //}
   }
 
-  static Uri tokenWithCode(String url, String token, String langCode) {
-    return Uri.parse(url)
-        .replace(queryParameters: {'token': token, 'lang_code': langCode});
-  }
 
-  static Uri tokenWithQuery(String url, String token, String langCode,
-      {Map<String, dynamic>? extraParams}) {
-    final baseUri = Uri.parse(url);
-    final queryParams = {
-      'token': token,
-      'lang_code': langCode,
-      ...extraParams!,
-    };
-    return baseUri.replace(queryParameters: queryParams);
-  }
-
-  static Uri tokenWithCodeAndPage(
-      String url, String token, String langCode, String page) {
-    return Uri.parse(url).replace(
-        queryParameters: {'token': token, 'lang_code': langCode, 'page': page});
-  }
-
-  static BlocListener<LoginBloc, LoginStateModel> logoutListener() {
-    return BlocListener<LoginBloc, LoginStateModel>(
-      listener: (context, state) {
-        final logout = state.loginState;
-        if (logout is LoginStateLogoutLoading) {
-          Utils.loadingDialog(context);
-        } else {
-          Utils.closeDialog(context);
-          if (logout is LoginStateLogoutError) {
-            Utils.errorSnackBar(context, logout.message);
-          } else if (logout is LoginStateLogoutLoaded) {
-            Utils.showSnackBar(context, logout.message);
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              RouteNames.authScreen,
-              (route) => false,
-            );
-          }
-        }
-      },
-    );
-  }
-
-  static Widget logout({required Widget child}) {
-    return BlocListener<LoginBloc, LoginStateModel>(
-      listener: (context, state) {
-        final logout = state.loginState;
-        if (logout is LoginStateLogoutLoading) {
-          Utils.loadingDialog(context);
-        } else {
-          Utils.closeDialog(context);
-          if (logout is LoginStateLogoutError) {
-            Utils.errorSnackBar(context, logout.message);
-          } else if (logout is LoginStateLogoutLoaded) {
-            Utils.showSnackBar(context, logout.message);
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              RouteNames.authScreen,
-              (route) => false,
-            );
-          }
-        }
-      },
-      child: child,
-    );
-  }
 
   static Future<void> logoutFunction(BuildContext context) async {
     context.read<LoginBloc>().add(const LoginEventLogout());
   }
-
-  static Future<String?> pickSingleImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      return image.path;
-    }
-    return null;
-  }
-
-  static Future<List<String?>> pickMultipleImage() async {
-    final ImagePicker picker = ImagePicker();
-    final List<String> imageList = [];
-    final List<XFile?> images = await picker.pickMultiImage();
-    if (images.isNotEmpty) {
-      for (var i in images) {
-        imageList.add(i!.path.toString());
-      }
-      debugPrint('picked images: ${imageList.length}');
-      return imageList;
-    }
-    return [];
-  }
-
-  static Future<String?> pickSingleFile([bool isResume = false]) async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: isResume == true
-          ? ['mp4', 'mpeg4', 'flv', 'wmv', 'avi']
-          : ['jpg', 'jpeg', 'png', 'gif'],
-    );
-    if (result != null &&
-        result.files.single.path != null &&
-        result.files.single.path!.isNotEmpty) {
-      File file = File(result.files.single.path!);
-      debugPrint('file-path ${file.path}');
-      return file.path;
-    } else {
-      debugPrint('file path not found');
-      return '';
-    }
-  }
-
-  static Future<List<String>> pickMultipleFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['mp4', 'jpg', 'jpeg', 'zip', 'pdf', 'png'],
-        allowMultiple: true);
-    final List<String> fileList = [];
-    if (result != null && result.files.isNotEmpty) {
-      for (var file in result.files) {
-        if (file.path != null && file.path!.isNotEmpty) {
-          fileList.add(file.path!);
-        }
-      }
-    }
-    debugPrint('pickMultipleFile $fileList');
-    return fileList;
-  }
+  //
+  // static Future<String?> pickSingleImage() async {
+  //   final ImagePicker picker = ImagePicker();
+  //   final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+  //   if (image != null) {
+  //     return image.path;
+  //   }
+  //   return null;
+  // }
+  //
+  // static Future<List<String?>> pickMultipleImage() async {
+  //   final ImagePicker picker = ImagePicker();
+  //   final List<String> imageList = [];
+  //   final List<XFile?> images = await picker.pickMultiImage();
+  //   if (images.isNotEmpty) {
+  //     for (var i in images) {
+  //       imageList.add(i!.path.toString());
+  //     }
+  //     debugPrint('picked images: ${imageList.length}');
+  //     return imageList;
+  //   }
+  //   return [];
+  // }
+  //
+  // static Future<String?> pickSingleFile([bool isResume = false]) async {
+  //   FilePickerResult? result = await FilePicker.platform.pickFiles(
+  //     type: FileType.custom,
+  //     allowedExtensions: isResume == true
+  //         ? ['mp4', 'mpeg4', 'flv', 'wmv', 'avi']
+  //         : ['jpg', 'jpeg', 'png', 'gif'],
+  //   );
+  //   if (result != null &&
+  //       result.files.single.path != null &&
+  //       result.files.single.path!.isNotEmpty) {
+  //     File file = File(result.files.single.path!);
+  //     debugPrint('file-path ${file.path}');
+  //     return file.path;
+  //   } else {
+  //     debugPrint('file path not found');
+  //     return '';
+  //   }
+  // }
+  //
+  // static Future<List<String>> pickMultipleFile() async {
+  //   FilePickerResult? result = await FilePicker.platform.pickFiles(
+  //       type: FileType.custom,
+  //       allowedExtensions: ['mp4', 'jpg', 'jpeg', 'zip', 'pdf', 'png'],
+  //       allowMultiple: true);
+  //   final List<String> fileList = [];
+  //   if (result != null && result.files.isNotEmpty) {
+  //     for (var file in result.files) {
+  //       if (file.path != null && file.path!.isNotEmpty) {
+  //         fileList.add(file.path!);
+  //       }
+  //     }
+  //   }
+  //   debugPrint('pickMultipleFile $fileList');
+  //   return fileList;
+  // }
 
   static String timeWithData(String data, [bool timeAndDate = true]) {
     if (timeAndDate) {

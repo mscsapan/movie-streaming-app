@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,8 +18,8 @@ class InternetStatusBloc
     on<InternetStatusLostEvent>((event, emit) =>
         emit(const InternetStatusLostState('No internet connection')));
     _subscription = _connectivity.onConnectivityChanged.listen((result) {
-      if (result == ConnectivityResult.mobile ||
-          result == ConnectivityResult.wifi) {
+      if (result.contains(ConnectivityResult.mobile) ||
+          result.contains(ConnectivityResult.wifi)) {
         add(InternetStatusBackEvent());
       } else {
         add(InternetStatusLostEvent());
