@@ -4,7 +4,7 @@ import '../utils/constraints.dart';
 import '../utils/utils.dart';
 
 class MyTheme {
-  static final borderRadius = BorderRadius.circular(10.0);
+  static final borderRadius = BorderRadius.circular(4.0);
   static final theme = ThemeData(
       //brightness: Brightness.light,
       primaryColor: whiteColor,
@@ -12,21 +12,21 @@ class MyTheme {
       // bottomSheetTheme: const BottomSheetThemeData(backgroundColor: whiteColor),
       // colorScheme: const ColorScheme.light(secondary: lightningYellowColor),
       appBarTheme: const AppBarTheme(
-        backgroundColor: grayBackgroundColor,
+        backgroundColor: blackColor,
         centerTitle: true,
         scrolledUnderElevation: 0.0,
-        titleTextStyle: TextStyle(
-            color: blackColor, fontSize: 20.0, fontWeight: FontWeight.bold),
-        iconTheme: IconThemeData(color: blackColor),
+        titleTextStyle: TextStyle(color: whiteColor, fontSize: 20.0, fontWeight: FontWeight.w700),
+        iconTheme: IconThemeData(color: whiteColor),
         elevation: 0,
       ),
       textTheme: const TextTheme(
         bodySmall: TextStyle(
           fontSize: 12, height: 1.83, fontFamily: 'HelveticaNeueMedium',),
         bodyLarge: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          height: 1.375,
+          fontSize: 14.0,
+          fontWeight: FontWeight.w400,
+          height: 1.0,
+          color: whiteColor,
           fontFamily: 'HelveticaNeueMedium',),
         bodyMedium: TextStyle(
           fontSize: 14, height: 1.5714, fontFamily: 'HelveticaNeueMedium',),
@@ -81,7 +81,7 @@ class MyTheme {
         isDense: true,
         hintStyle: const TextStyle(
           fontWeight: FontWeight.w400,
-          fontSize: 16.0,
+          fontSize: 14.0,
           color: grayColor,
           fontFamily: 'HelveticaNeueMedium',
         ),
@@ -91,10 +91,13 @@ class MyTheme {
           color: hintTextColor,
           fontFamily: 'HelveticaNeueMedium',
         ),
-        contentPadding: Utils.symmetric(v: 20.0),
+       // prefixIconConstraints:  const BoxConstraints(maxWidth: 100.0),
+        contentPadding: Utils.symmetric(h: 20.0,v: 14.0),
         border: OutlineInputBorder(
           borderRadius: borderRadius,
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(
+            color: whiteColor.withValues(alpha: 0.24),
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: borderRadius,
@@ -102,17 +105,16 @@ class MyTheme {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: borderRadius,
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(
+            color: whiteColor.withValues(alpha: 0.24),
+          ),
         ),
-        fillColor: whiteColor,
-        //fillColor: fillColor,
-        filled: true,
         focusColor: primaryColor,
       ),
       textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: blackColor,
-        selectionColor: blackColor,
-        selectionHandleColor: blackColor,
+        cursorColor: whiteColor,
+        selectionColor: primaryColor,
+        selectionHandleColor: primaryColor,
       ),
       progressIndicatorTheme:
           const ProgressIndicatorThemeData(color: primaryColor));

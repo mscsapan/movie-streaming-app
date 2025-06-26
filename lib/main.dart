@@ -36,7 +36,7 @@ class MovieStreamingApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               onGenerateRoute: RouteNames.generateRoutes,
-              initialRoute: RouteNames.splashScreen,
+              initialRoute: RouteNames.loginScreen,
               theme: MyTheme.theme,
               onUnknownRoute: (RouteSettings settings) {
                 return MaterialPageRoute(
@@ -51,7 +51,7 @@ class MovieStreamingApp extends StatelessWidget {
                 return MediaQuery(
                   data: MediaQuery.of(context)
                       .copyWith(textScaler: const TextScaler.linear(1.0)),
-                  child: child!,
+                  child: child??const SizedBox.shrink(),
                 );
               },
             ),

@@ -1,5 +1,4 @@
 
-export '../screens/authentication/auth_screen.dart';
 export '../screens/authentication/change_password_screen.dart';
 export '../screens/authentication/forgot_password_screen.dart';
 export '../screens/authentication/otp_verification_screen.dart';

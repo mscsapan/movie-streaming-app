@@ -1,23 +1,14 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-import '../../data/models/auth/login_state_model.dart';
-import '../../data/models/setting/currencies_model.dart';
-import '../../logic/bloc/login/login_bloc.dart';
-import '../../logic/cubit/currency/currency_cubit.dart';
-import '../../logic/cubit/setting/setting_cubit.dart';
-import '../routes/route_names.dart';
 import '../widgets/custom_image.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/primary_button.dart';
 import 'constraints.dart';
-import 'k_images.dart';
 
 class Utils {
   static final _selectedDate = DateTime.now();
@@ -94,68 +85,68 @@ class Utils {
     // }
   }
 
-  static String convertCurrency(
-      var price, BuildContext context, CurrenciesModel c,
-      [int radix = 1]) {
-    String afterPrice = 'right';
-    String afterPriceWithSpace = 'after_price_with_space';
-    if (c.status == 1 && (c.currencyPosition.toLowerCase() == afterPrice)) {
-      if (price is double) {
-        // debugPrint('double-price $price');
-        final result = price * c.currencyRate;
-        return '${result.toStringAsFixed(radix)}${c.currencyIcon}';
-      }
-      if (price is String) {
-        // debugPrint('String-price $price');
-        final r = double.tryParse(price) ?? 0.0;
-        final p = r * c.currencyRate;
-        return '${p.toStringAsFixed(radix)}${c.currencyIcon}';
-      }
-      if (price is int) {
-        // debugPrint('int-price $price');
-        final p = price * c.currencyRate;
-        return '${p.toStringAsFixed(radix)}${c.currencyIcon}';
-      } else {
-        // debugPrint('other-price $price');
-        return '${price * c.currencyRate.toStringAsFixed(radix)}${c.currencyIcon}';
-      }
-    } else {
-      if (price is double) {
-        final result = price * c.currencyRate;
-        return '${c.currencyIcon}${result.toStringAsFixed(radix)}';
-      }
-      if (price is String) {
-        final r = double.tryParse(price) ?? 0.0;
-        final p = r * c.currencyRate;
-        return '${c.currencyIcon}${p.toStringAsFixed(radix)}';
-      }
-      if (price is int) {
-        // debugPrint('int-price $price');
-        final p = price * c.currencyRate;
-        return '${c.currencyIcon}${p.toStringAsFixed(radix)}';
-      }
-      return '${c.currencyIcon}${price * c.currencyRate.toStringAsFixed(radix)}';
-    }
-  }
+  // static String convertCurrency(
+  //     var price, BuildContext context, CurrenciesModel c,
+  //     [int radix = 1]) {
+  //   String afterPrice = 'right';
+  //   String afterPriceWithSpace = 'after_price_with_space';
+  //   if (c.status == 1 && (c.currencyPosition.toLowerCase() == afterPrice)) {
+  //     if (price is double) {
+  //       // debugPrint('double-price $price');
+  //       final result = price * c.currencyRate;
+  //       return '${result.toStringAsFixed(radix)}${c.currencyIcon}';
+  //     }
+  //     if (price is String) {
+  //       // debugPrint('String-price $price');
+  //       final r = double.tryParse(price) ?? 0.0;
+  //       final p = r * c.currencyRate;
+  //       return '${p.toStringAsFixed(radix)}${c.currencyIcon}';
+  //     }
+  //     if (price is int) {
+  //       // debugPrint('int-price $price');
+  //       final p = price * c.currencyRate;
+  //       return '${p.toStringAsFixed(radix)}${c.currencyIcon}';
+  //     } else {
+  //       // debugPrint('other-price $price');
+  //       return '${price * c.currencyRate.toStringAsFixed(radix)}${c.currencyIcon}';
+  //     }
+  //   } else {
+  //     if (price is double) {
+  //       final result = price * c.currencyRate;
+  //       return '${c.currencyIcon}${result.toStringAsFixed(radix)}';
+  //     }
+  //     if (price is String) {
+  //       final r = double.tryParse(price) ?? 0.0;
+  //       final p = r * c.currencyRate;
+  //       return '${c.currencyIcon}${p.toStringAsFixed(radix)}';
+  //     }
+  //     if (price is int) {
+  //       // debugPrint('int-price $price');
+  //       final p = price * c.currencyRate;
+  //       return '${c.currencyIcon}${p.toStringAsFixed(radix)}';
+  //     }
+  //     return '${c.currencyIcon}${price * c.currencyRate.toStringAsFixed(radix)}';
+  //   }
+  // }
 
-  static String formatAmount(BuildContext context, var price, [int radix = 1]) {
-    final cCubit = context.read<CurrencyCubit>();
-    final sCubit = context.read<SettingCubit>();
-    if (cCubit.state.currencies.isNotEmpty) {
-      return Utils.convertCurrency(
-          price, context, cCubit.state.currencies.first, radix);
-    } else {
-      if (sCubit.settingModel != null &&
-          sCubit.settingModel!.setting.currencyIcon.isNotEmpty) {
-        String currency = sCubit.settingModel!.setting.currencyIcon;
-        final p = price.toString();
-        return '$currency$p';
-      } else {
-        final p = price.toString();
-        return '\$$p';
-      }
-    }
-  }
+  // static String formatAmount(BuildContext context, var price, [int radix = 1]) {
+  //   final cCubit = context.read<CurrencyCubit>();
+  //   final sCubit = context.read<SettingCubit>();
+  //   if (cCubit.state.currencies.isNotEmpty) {
+  //     return Utils.convertCurrency(
+  //         price, context, cCubit.state.currencies.first, radix);
+  //   } else {
+  //     if (sCubit.settingModel != null &&
+  //         sCubit.settingModel!.setting.currencyIcon.isNotEmpty) {
+  //       String currency = sCubit.settingModel!.setting.currencyIcon;
+  //       final p = price.toString();
+  //       return '$currency$p';
+  //     } else {
+  //       final p = price.toString();
+  //       return '\$$p';
+  //     }
+  //   }
+  // }
 
   static String imageContent(BuildContext context, String key) {
     // final webSetting = context.read<AppSettingCubit>().settingModel;
@@ -168,9 +159,6 @@ class Utils {
 
 
 
-  static Future<void> logoutFunction(BuildContext context) async {
-    context.read<LoginBloc>().add(const LoginEventLogout());
-  }
   //
   // static Future<String?> pickSingleImage() async {
   //   final ImagePicker picker = ImagePicker();
@@ -324,7 +312,7 @@ class Utils {
     return size.h;
   }
 
-  static EdgeInsets symmetric({double h = 20.0, v = 0.0}) {
+  static EdgeInsets symmetric({double h = 24.0, v = 0.0}) {
     return EdgeInsets.symmetric(
         horizontal: Utils.hPadding(size: h), vertical: Utils.vPadding(size: v));
   }

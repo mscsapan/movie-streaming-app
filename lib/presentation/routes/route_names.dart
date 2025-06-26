@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../screens/authentication/login_screen.dart';
+import '../screens/authentication/sign_up_screen.dart';
 import 'route_packages_name.dart';
 
 class RouteNames {
   ///authentication routes
   static const String splashScreen = '/splashScreen';
   static const String onBoardingScreen = '/onBoardingScreen';
-  static const String authScreen = '/authenticationScreen';
+  static const String loginScreen = '/loginScreen';
+  static const String signUpScreen = '/signUpScreen';
   static const String changePasswordScreen = '/changePasswordScreen';
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String updatePasswordScreen = '/updatePasswordScreen';
@@ -37,9 +40,13 @@ class RouteNames {
         return MaterialPageRoute(
             settings: settings, builder: (_) => const OnBoardingScreen());
 
-      case RouteNames.authScreen:
+      case RouteNames.loginScreen:
         return MaterialPageRoute(
-            settings: settings, builder: (_) => const AuthScreen());
+            settings: settings, builder: (_) => const LoginScreen());
+
+        case RouteNames.signUpScreen:
+        return MaterialPageRoute(
+            settings: settings, builder: (_) => const SignUpScreen());
 
       case RouteNames.forgotPasswordScreen:
         return MaterialPageRoute(

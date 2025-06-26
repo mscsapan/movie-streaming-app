@@ -1,11 +1,10 @@
 import 'package:http/http.dart' as http;
 
-import '../models/auth/login_state_model.dart';
 import 'network_parser.dart';
 import 'remote_url.dart';
 
 abstract class RemoteDataSource {
-  Future login(LoginStateModel body);
+  // Future login(LoginStateModel body);
 
   Future logout(String token);
 
@@ -30,14 +29,14 @@ class RemoteDataSourceImpl extends RemoteDataSource {
     'X-Requested-With': 'XMLHttpRequest',
   };
 
-  @override
-  Future login(LoginStateModel body) async {
-    final uri = Uri.parse(RemoteUrls.login);
-    final clientMethod = client.post(uri, body: body.toMap(), headers: headers);
-    final responseJsonBody =
-        await NetworkParser.callClientWithCatchException(() => clientMethod);
-    return responseJsonBody;
-  }
+  // @override
+  // Future login(LoginStateModel body) async {
+  //   final uri = Uri.parse(RemoteUrls.login);
+  //   final clientMethod = client.post(uri, body: body.toMap(), headers: headers);
+  //   final responseJsonBody =
+  //       await NetworkParser.callClientWithCatchException(() => clientMethod);
+  //   return responseJsonBody;
+  // }
 
   @override
   Future logout(String token) async {
