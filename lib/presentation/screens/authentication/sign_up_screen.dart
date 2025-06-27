@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 import '../../../data/models/login/login_state_model.dart';
 import '../../../logic/cubit/login/login_cubit.dart';
+import '../../routes/route_names.dart';
 import '../../utils/constraints.dart';
 import '../../utils/k_images.dart';
 import '../../utils/utils.dart';
@@ -124,16 +126,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 keyboardType: TextInputType.datetime,
               ),
               Utils.verticalSpace(16.0),
-              const CustomText(text: 'Forgot Password?',
-                textAlign: TextAlign.end,
-                fontSize: 14.0,
-              ),
-              Utils.verticalSpace(16.0),
               PrimaryButton(
                 text: 'Create Account',
                 textColor: isValid ? whiteColor : grayColor,
                 bgColor: isValid ? primaryColor : whiteColor.withValues(alpha: 0.12),
-                onPressed: () {},
+                onPressed: () {
+                  Utils.closeKeyBoard(context);
+                  if(isValid){
+                    Navigator.pushNamed(context,RouteNames.verificationScreen,arguments: true);
+                  }
+                },
               ),
               Padding(
                 padding: Utils.symmetric(h: 0.0, v: 16.0),
@@ -144,7 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 1.0,
                   color: grayColor,),),
 
-              PrimaryButton(text: 'Login with Apple',
+              PrimaryButton(text: 'Register with Apple',
                 onPressed: () {},
                 textColor: blackColor,
                 buttonType: ButtonType.iconButton,
@@ -154,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 fontWeight: FontWeight.w400,
                 icon: const CustomImage(path: KImages.appleIcon,height: 20.0,width: 20.0,),),
               Utils.verticalSpace(16.0),
-              PrimaryButton(text: 'Login with Google',
+              PrimaryButton(text: 'Register with Google',
                 onPressed: () {},
                 textColor: whiteColor,
                 buttonType: ButtonType.iconButton,
@@ -165,11 +167,65 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 fontWeight: FontWeight.w400,
                 icon: const CustomImage(path: KImages.googleIcon,height: 20.0,width: 20.0,),),
 
+              termsCondition()
+
             ],
           );
         },
       ),
     );
   }
+
+}
+Widget termsCondition() {
+  return Padding(
+    padding: Utils.symmetric(h: 20.0).copyWith(top: 40.0),
+    child: RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        children: [
+          const TextSpan(
+            text: "By creating an account, you agree to our’s ",
+            style: TextStyle(
+              fontSize: 14.0,
+              color: grayColor50,
+              height: 1.4,
+            ),
+          ),
+          TextSpan(
+            text: "Privacy Policy",
+            style: const TextStyle(
+              fontSize: 14.0,
+              color: primaryColor,
+              fontWeight: FontWeight.w400,
+              height: 1.4,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {},
+          ),
+          const TextSpan(
+            text: " and ",
+            style: TextStyle(
+              fontSize: 15.0,
+              color: grayColor50,
+              fontWeight: FontWeight.w400,
+              height: 1.4,
+            ),
+          ),
+          TextSpan(
+            text: "Terms of Use",
+            style: const TextStyle(
+              fontSize: 14.0,
+              color: primaryColor,
+              fontWeight: FontWeight.w400,
+              height: 1.4,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {},
+          ),
+        ],
+      ),
+    ),
+  );
 }
 

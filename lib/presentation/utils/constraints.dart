@@ -27,6 +27,9 @@ const String bold400 = 'Regular400';
 const String bold500 = 'Regular500';
 const String bold700 = 'Bold700';
 
+
+const String fontFamily = 'HelveticaNeueMedium';
+
 ///gradient colors
 const buttonGradient = LinearGradient(
   begin: Alignment(0.00, -1.00),

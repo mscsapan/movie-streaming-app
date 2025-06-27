@@ -10,6 +10,8 @@ class LoginCubit extends Cubit<LoginStateModel> {
 
   final FocusNode emailFocus = FocusNode();
   final FocusNode passwordFocus = FocusNode();
+  final FocusNode loginEmailFocus = FocusNode();
+  final FocusNode loginPasswordFocus = FocusNode();
   final FocusNode confirmPasswordFocus = FocusNode();
   final FocusNode dateFocus = FocusNode();
 
@@ -22,6 +24,8 @@ class LoginCubit extends Cubit<LoginStateModel> {
     passwordFocus.addListener(() => _onFocusChanged('password', passwordFocus));
     confirmPasswordFocus.addListener(() => _onFocusChanged('confirm', confirmPasswordFocus));
     dateFocus.addListener(() => _onFocusChanged('date', dateFocus));
+    loginEmailFocus.addListener(() => _onFocusChanged('login-email', dateFocus));
+    loginPasswordFocus.addListener(() => _onFocusChanged('login-password', dateFocus));
   }
 
   void _onFocusChanged(String field, FocusNode node) {
@@ -55,6 +59,14 @@ class LoginCubit extends Cubit<LoginStateModel> {
     if (model == null) return false;
 
     return [model.email, model.password].every((e) => e.trim().isNotEmpty);
+  }
+
+  bool validOTP(){
+    final model = state.model;
+
+    if (model == null) return false;
+
+    return model.otp.trim().length == 4;
   }
 
   void clearField(){

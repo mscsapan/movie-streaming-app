@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const CustomText(text: 'Welcome to Moviers',fontWeight: FontWeight.w700,fontSize: 20.0),
               Utils.verticalSpace(24.0),
               TextFormField(
-                focusNode: loginCubit.emailFocus,
+                focusNode: loginCubit.loginEmailFocus,
                 // initialValue: state.model?.email ?? '',
                 controller: loginCubit.emailController,
                 onChanged: (String text) {
@@ -60,14 +60,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Email',
                   prefixIcon: Utils.prefixIcon(
                     KImages.emailIcon,
-                    state.focusedField == 'email' ? primaryColor : whiteColor,
+                    state.focusedField == 'login-email' ? primaryColor : whiteColor,
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
               ),
               Utils.verticalSpace(16.0),
               TextFormField(
-                focusNode: loginCubit.passwordFocus,
+                focusNode: loginCubit.loginPasswordFocus,
                 // initialValue: state.model?.password ?? '',
                 controller: loginCubit.passController,
                 onChanged: (String text) {
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Password',
                   prefixIcon: Utils.prefixIcon(
                     KImages.passwordIcon,
-                    state.focusedField == 'password' ? primaryColor : whiteColor,
+                    state.focusedField == 'login-password' ? primaryColor : whiteColor,
                   ),
                 ),
                 keyboardType: TextInputType.visiblePassword,
