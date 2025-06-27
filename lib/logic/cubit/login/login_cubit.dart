@@ -13,7 +13,11 @@ class LoginCubit extends Cubit<LoginStateModel> {
   final FocusNode confirmPasswordFocus = FocusNode();
   final FocusNode dateFocus = FocusNode();
 
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+
   LoginCubit() : super(const LoginStateModel()) {
+    debugPrint('called multiple times in login cubit constructor');
     emailFocus.addListener(() => _onFocusChanged('email', emailFocus));
     passwordFocus.addListener(() => _onFocusChanged('password', passwordFocus));
     confirmPasswordFocus.addListener(() => _onFocusChanged('confirm', confirmPasswordFocus));
@@ -31,6 +35,43 @@ class LoginCubit extends Cubit<LoginStateModel> {
 
   void addFieldValue(LoginStateModel  ? model){
     emit(state.copyWith(model: model));
+  }
+
+
+  bool isSignUpInputValid() {
+    final model = state.model;
+    if (model == null) return false;
+
+    return [
+      model.email,
+      model.password,
+      model.confirmPassword,
+      model.dateTime,
+    ].every((e) => e.trim().isNotEmpty);
+  }
+
+  bool isLoginInputValid() {
+    final model = state.model;
+    if (model == null) return false;
+
+    return [model.email, model.password].every((e) => e.trim().isNotEmpty);
+  }
+
+  void clearField(){
+    // const model = LoginStateModel(
+    //   email: '',
+    //   password: '',
+    //   confirmPassword: '',
+    //   dateTime: '',
+    //   otp: '',
+    //   focusedField: '',
+    //   isShowPassword: false,
+    //   isShowConfirmPassword: false,);
+    emailController.clear();
+    passController.clear();
+    debugPrint('before-model ${state.model}');
+    emit(state.copyWith(model:const LoginStateModel()));
+    debugPrint('after-model ${state.model}');
   }
 
   @override

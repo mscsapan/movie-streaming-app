@@ -8,17 +8,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     this.isLeading,
-    this.actions,
+    this.actions, this.onTap,
   });
 
   final String title;
   final bool? isLeading;
   final List<Widget>? actions;
+  final VoidCallback ? onTap;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: isLeading ?? true,
+      //automaticallyImplyLeading: isLeading ?? true,
+      leading: isLeading ?? true? GestureDetector(
+          onTap: onTap ?? () => Navigator.of(context).pop(),
+          child: const Icon(Icons.arrow_back, color: whiteColor, size: 20.0)):const SizedBox.shrink(),
       title: CustomText(
         text: title,
         fontSize: 20.0,

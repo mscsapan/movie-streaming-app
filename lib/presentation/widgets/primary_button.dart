@@ -17,11 +17,10 @@ class PrimaryButton extends StatelessWidget {
     this.bgColor = primaryColor,
     this.borderColor = primaryColor,
     this.minimumSize = const Size(double.infinity, 48.0),
-    this.borderRadiusSize = 6.0,
+    this.borderRadiusSize = 4.0,
     this.buttonType = ButtonType.elevated,
     this.padding,
     this.icon,
-    this.fontFamily,
   });
 
   final VoidCallback? onPressed;
@@ -38,35 +37,42 @@ class PrimaryButton extends StatelessWidget {
   final EdgeInsets? padding;
   final Widget? icon;
   final FontWeight fontWeight;
-  final String? fontFamily;
+
 
   @override
   Widget build(BuildContext context) {
-    final p = padding ?? Utils.all(value: 0.0);
     final tempIcon = icon ?? const Icon(Icons.add);
     final borderRadius = BorderRadius.circular(borderRadiusSize);
     if (buttonType == ButtonType.iconButton) {
-      return Padding(
-        padding: p,
-        child: ElevatedButton.icon(
-          onPressed: onPressed,
-          label: tempIcon,
-          icon: Padding(
-            padding: p,
-            child: CustomText(
-              text: text,
-              color: textColor,
-              fontSize: fontSize.sp,
-              height: 1.5.h,
-              fontWeight: fontWeight,
-              textAlign: TextAlign.center,
-            ),
-          ),
+      return ElevatedButton.icon(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all(bgColor),
+          splashFactory: NoSplash.splashFactory,
+          shadowColor: WidgetStateProperty.all(transparent),
+          overlayColor: WidgetStateProperty.all(transparent),
+          elevation: WidgetStateProperty.all(0.0),
+          shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: borderRadius)),
+          side: WidgetStateProperty.all(BorderSide(color: borderColor, width: 1.0)),
+          minimumSize: WidgetStateProperty.all(minimumSize),
+          maximumSize: WidgetStateProperty.all(maximumSize),
+        ),
+        icon: Padding(
+          padding: padding ?? Utils.all(value: 0.0),
+          child: tempIcon,
+        ),
+        label: CustomText(
+          text: text,
+          color: textColor,
+          fontSize: fontSize.sp,
+          height: 1.4,
+          fontWeight: fontWeight,
+          textAlign: TextAlign.center,
         ),
       );
     } else if (buttonType == ButtonType.outlined) {
       return Padding(
-        padding: p,
+        padding: padding ?? Utils.all(value: 0.0),
         child: OutlinedButton(
           onPressed: onPressed,
           style: ButtonStyle(
@@ -87,7 +93,7 @@ class PrimaryButton extends StatelessWidget {
               text: text,
               color: textColor,
               fontSize: fontSize.sp,
-              height: 1.5.h,
+              height: 1.4,
               fontWeight: fontWeight,
               textAlign: TextAlign.center,
             ),
@@ -96,7 +102,7 @@ class PrimaryButton extends StatelessWidget {
       );
     } else {
       return Padding(
-        padding: p,
+        padding: padding ?? Utils.all(value: 0.0),
         child: ElevatedButton(
           onPressed: onPressed,
           style: ButtonStyle(
@@ -110,12 +116,12 @@ class PrimaryButton extends StatelessWidget {
             maximumSize: WidgetStateProperty.all(maximumSize),
           ),
           child: Padding(
-            padding: p,
+            padding: padding ?? Utils.all(value: 0.0),
             child: CustomText(
               text: text,
               color: textColor,
               fontSize: fontSize,
-              height: 1.5,
+              height: 1.4,
               fontWeight: fontWeight,
               textAlign: TextAlign.center,
             ),

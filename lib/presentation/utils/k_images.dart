@@ -7,4 +7,6 @@ class KImages {
   static const String emailIcon = 'assets/icons/email.svg';
   static const String passwordIcon = 'assets/icons/password.svg';
   static const String dateTimeIcon = 'assets/icons/date_time.svg';
+  static const String appleIcon = 'assets/icons/apple_icon.svg';
+  static const String googleIcon = 'assets/icons/google_icon.svg';
 }

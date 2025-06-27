@@ -148,6 +148,13 @@ class Utils {
   //   }
   // }
 
+  static Widget prefixIcon(String path,[Color color = whiteColor]) {
+    return Padding(
+      padding: Utils.all(value: 12.0),
+      child: CustomImage(path: path,color: color,height: 20.0,width: 20.0),
+    );
+  }
+
   static String imageContent(BuildContext context, String key) {
     // final webSetting = context.read<AppSettingCubit>().settingModel;
     // if (webSetting != null && webSetting.imageContent![key] != null) {
