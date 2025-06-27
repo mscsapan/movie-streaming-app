@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../models/personalize/personalize_model.dart';
+
 class DummyDashboardModel extends Equatable {
   final String image;
   final String name;
@@ -49,148 +51,12 @@ final List<ProductStatusModel> productStatusModel = [
   const ProductStatusModel(id: '0', title: 'Inactive'),
 ];
 
-// class DemoCurrencies extends Equatable {
-//   final int id;
-//   final String currencyName;
-//   final String countryCode;
-//   final String currencyCode;
-//   final String currencyIcon;
-//   final String isDefault;
-//   final double currencyRate;
-//   final String currencyPosition;
-//   final int status;
-//
-//   const DemoCurrencies({
-//     required this.id,
-//     required this.currencyName,
-//     required this.countryCode,
-//     required this.currencyCode,
-//     required this.currencyIcon,
-//     required this.isDefault,
-//     required this.currencyRate,
-//     required this.currencyPosition,
-//     required this.status,
-//   });
-//
-//   @override
-//   List<Object> get props {
-//     return [
-//       id,
-//       currencyName,
-//       countryCode,
-//       currencyCode,
-//       currencyIcon,
-//       isDefault,
-//       currencyRate,
-//       currencyPosition,
-//       status,
-//     ];
-//   }
-// }
 
-// final List<CurrenciesModel> demoCurrencies = [
-//   const CurrenciesModel(
-//     id: 1,
-//     currencyName: '\$-USD',
-//     currencyCode: 'USD',
-//     countryCode: 'USD',
-//     currencyIcon: '\$',
-//     isDefault: 'Yes',
-//     currencyPosition: 'left',
-//     status: 1,
-//     currencyRate: 1.0,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 2,
-//     currencyName: '€-Euro',
-//     currencyCode: 'EUR',
-//     countryCode: 'EU',
-//     currencyIcon: '€',
-//     isDefault: 'No',
-//     currencyPosition: 'right',
-//     status: 1,
-//     currencyRate: 0.93,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 3,
-//     currencyName: '£-GBP',
-//     currencyCode: 'GBP',
-//     countryCode: 'GB',
-//     currencyIcon: '£',
-//     isDefault: 'No',
-//     currencyPosition: 'left',
-//     status: 1,
-//     currencyRate: 0.74,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 4,
-//     currencyName: '¥-Yen',
-//     currencyCode: 'JPY',
-//     countryCode: 'JP',
-//     currencyIcon: '¥',
-//     isDefault: 'No',
-//     currencyPosition: 'right',
-//     status: 1,
-//     currencyRate: 110.0,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 5,
-//     currencyName: '₹-INR',
-//     currencyCode: 'INR',
-//     countryCode: 'IN',
-//     currencyIcon: '₹',
-//     isDefault: 'No',
-//     currencyPosition: 'left',
-//     status: 1,
-//     currencyRate: 73.5,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 6,
-//     currencyName: '₽-RUB',
-//     currencyCode: 'RUB',
-//     countryCode: 'RU',
-//     currencyIcon: '₽',
-//     isDefault: 'No',
-//     currencyPosition: 'right',
-//     status: 1,
-//     currencyRate: 73.5,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 7,
-//     currencyName: '฿-Baht',
-//     currencyCode: 'THB',
-//     countryCode: 'TH',
-//     currencyIcon: '฿',
-//     isDefault: 'No',
-//     currencyPosition: 'left',
-//     status: 1,
-//     currencyRate: 32.8,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-//   const CurrenciesModel(
-//     id: 11,
-//     currencyName: '৳-BDT',
-//     currencyCode: 'BDT',
-//     countryCode: 'BD',
-//     currencyIcon: '৳',
-//     isDefault: 'No',
-//     currencyPosition: 'right',
-//     status: 1,
-//     currencyRate: 109.76,
-//     createdAt: '',
-//     updatedAt: '',
-//   ),
-// ];
+final List<PersonalizeModel> personalizes = [
+  const PersonalizeModel(name: 'Action', image: 'assets/images/p01.png',likes: 4324),
+  const PersonalizeModel(name: 'Adventure', image: 'assets/images/p02.png',likes: 2592),
+  const PersonalizeModel(name: 'Comedy', image: 'assets/images/p03.png',likes: 920),
+  const PersonalizeModel(name: 'Drama', image: 'assets/images/p04.png',likes: 1423),
+  const PersonalizeModel(name: 'Thee Good Dinosaur', image: 'assets/images/p05.png',likes: 1423),
+  const PersonalizeModel(name: 'Thee Good Dinosaur', image: 'assets/images/p06.png',likes: 1423),
+];
