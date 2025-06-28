@@ -66,6 +66,19 @@ class Utils {
     return input[0].toUpperCase() + input.substring(1).toLowerCase();
   }
 
+  static String priceSeparator(int value, {String locale = 'en_US', String symbol = '', int radix = 0}) {
+    try {
+      final formatter = NumberFormat.currency(
+        locale: locale,
+        symbol: symbol,
+        decimalDigits: radix,
+      );
+      return formatter.format(value);
+    } catch (e) {
+      return value.toStringAsFixed(radix);
+    }
+  }
+
   static String translatedText(BuildContext context, String key,
       [bool lower = false]) {
     return key;

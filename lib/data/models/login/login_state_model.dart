@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 import '../../../logic/cubit/login/login_cubit.dart';
+import '../personalize/personalize_model.dart';
 
 class LoginStateModel extends Equatable {
   final String email;
@@ -15,6 +16,7 @@ class LoginStateModel extends Equatable {
   final bool isShowPassword;
   final bool isShowConfirmPassword;
   final LoginStateModel ? model;
+  final List<PersonalizeModel> personalizes;
   final LoginState loginState;
   const LoginStateModel({
      this.email = '',
@@ -26,6 +28,7 @@ class LoginStateModel extends Equatable {
      this.model,
      this.isShowPassword = false,
      this.isShowConfirmPassword = false,
+     this.personalizes = const [],
      this.loginState = const LoginInitial(),
   });
 
@@ -39,6 +42,7 @@ class LoginStateModel extends Equatable {
     bool? isShowPassword,
     LoginStateModel ? model,
     bool? isShowConfirmPassword,
+    List<PersonalizeModel>? personalizes,
     LoginState? loginState,
   }) {
     return LoginStateModel(
@@ -51,6 +55,7 @@ class LoginStateModel extends Equatable {
       isShowPassword: isShowPassword ?? this.isShowPassword,
       isShowConfirmPassword: isShowConfirmPassword ?? this.isShowConfirmPassword,
       model: model ?? this.model,
+      personalizes: personalizes ?? this.personalizes,
       loginState: loginState ?? this.loginState,
     );
   }
@@ -98,6 +103,7 @@ class LoginStateModel extends Equatable {
       isShowPassword,
       isShowConfirmPassword,
       model,
+      personalizes,
       loginState,
     ];
   }

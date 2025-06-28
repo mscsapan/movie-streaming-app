@@ -4,6 +4,7 @@ import 'package:pinput/pinput.dart';
 
 import '../../../data/models/login/login_state_model.dart';
 import '../../../logic/cubit/login/login_cubit.dart';
+import '../../routes/route_names.dart';
 import '../../utils/constraints.dart';
 import '../../utils/utils.dart';
 import '../../widgets/custom_app_bar.dart';
@@ -90,7 +91,7 @@ class OtpVerificationScreen extends StatelessWidget {
                 onPressed: () {
                   Utils.closeKeyBoard(context);
                   if (isValid) {
-                    // Navigator.pushNamed(context,RouteNames.verificationScreen,arguments: true);
+                    Navigator.pushNamed(context,RouteNames.personalizeScreen);
                   }
                 },
               ),

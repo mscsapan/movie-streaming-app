@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/models/login/login_state_model.dart';
+import '../../../data/models/personalize/personalize_model.dart';
 
 part 'login_state.dart';
 
@@ -67,6 +68,18 @@ class LoginCubit extends Cubit<LoginStateModel> {
     if (model == null) return false;
 
     return model.otp.trim().length == 4;
+  }
+
+  void addPersonalize(PersonalizeModel model){
+    final updated = List.of(state.personalizes);
+
+    if(!state.personalizes.contains(model)){
+      updated.add(model);
+    }else{
+      updated.remove(model);
+    }
+
+    emit(state.copyWith(personalizes: updated));
   }
 
   void clearField(){
