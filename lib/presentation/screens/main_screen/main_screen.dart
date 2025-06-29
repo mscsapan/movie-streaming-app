@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/utils.dart';
+import '../account/account_screen.dart';
+import '../favorite/favorite_screen.dart';
+import '../home/home_screen.dart';
+import '../search/search_screen.dart';
 import 'component/bottom_navigation_bar.dart';
 import 'component/main_controller.dart';
 
@@ -19,16 +23,15 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     screenList = [
-      // const DashboardScreen(),
-      // const MyShopScreen(),
-      // const SellerAllOrderScreen(),
-      // const WithdrawScreen(),
+      const HomeScreen(),
+      const FavoriteScreen(),
+      const SearchScreen(),
+      const AccountScreen(),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
-    // final dCubit = context.read<DashboardCubit>();
     return WillPopScope(
       onWillPop: () async {
         Utils.exitFromAppDialog(context);
@@ -44,18 +47,6 @@ class _MainScreenState extends State<MainScreen> {
           },
         ),
         bottomNavigationBar: const MyBottomNavigationBar(),
-        // bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
-        //   builder: (context, state) {
-        //     if (state is DashboardStateLoaded) {
-        //       return const MyBottomNavigationBar();
-        //     }
-        //     if (dCubit.dashboardModel != null) {
-        //       return const MyBottomNavigationBar();
-        //     } else {
-        //       return const SizedBox.shrink();
-        //     }
-        //   },
-        // ),
       ),
     );
   }

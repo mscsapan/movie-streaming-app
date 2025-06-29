@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../utils/constraints.dart';
+import '../../../utils/k_images.dart';
 import '../../../utils/utils.dart';
+import '../../../widgets/custom_image.dart';
 import 'main_controller.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {
@@ -36,31 +38,31 @@ class MyBottomNavigationBar extends StatelessWidget {
                   const TextStyle(fontSize: 14, color: blackColor),
               unselectedLabelStyle:
                   const TextStyle(fontSize: 14, color: grayColor),
-              items: const <BottomNavigationBarItem>[
-                // BottomNavigationBarItem(
-                //   tooltip: Language.home,
-                //   icon: _navIcon(KImages.home),
-                //   activeIcon: SvgPicture.asset(KImages.homeActive),
-                //   label: Language.home,
-                // ),
-                // BottomNavigationBarItem(
-                //   tooltip: Language.shop,
-                //   icon: _navIcon(KImages.shop),
-                //   activeIcon: SvgPicture.asset(KImages.shopActive),
-                //   label: Language.shop,
-                // ),
-                // BottomNavigationBarItem(
-                //   tooltip: Language.orders,
-                //   icon: _navIcon(KImages.order),
-                //   activeIcon: SvgPicture.asset(KImages.orderActive),
-                //   label: Language.orders,
-                // ),
-                // BottomNavigationBarItem(
-                //   tooltip: Language.wallet,
-                //   activeIcon: SvgPicture.asset(KImages.walletActive),
-                //   icon: _navIcon(KImages.wallet),
-                //   label: Language.wallet,
-                // ),
+              items:  <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  tooltip: 'Home',
+                  icon: _navIcon(KImages.homeIcon),
+                  activeIcon: _navIcon(KImages.homeActiveIcon),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  tooltip: 'Favorite',
+                  icon: _navIcon(KImages.favoriteIcon),
+                  activeIcon: _navIcon(KImages.favoriteActiveIcon),
+                  label: 'Favorite',
+                ),
+                BottomNavigationBarItem(
+                  tooltip: 'Search',
+                  icon: _navIcon(KImages.searchIcon),
+                  activeIcon: _navIcon(KImages.searchActiveIcon),
+                  label: 'Search',
+                ),
+                const BottomNavigationBarItem(
+                  tooltip: 'Account',
+                  activeIcon: CustomImage(path: KImages.account,height: 40.0,width: 40.0,fit: BoxFit.cover,),
+                  icon: CustomImage(path: KImages.account,height: 40.0,width: 40.0,fit: BoxFit.cover,),
+                  label: 'Account',
+                ),
               ],
               // type: BottomNavigationBarType.fixed,
               currentIndex: selectedIndex,

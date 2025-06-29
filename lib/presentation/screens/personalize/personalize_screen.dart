@@ -5,6 +5,7 @@ import '../../../data/dummy_data/dummy_data.dart';
 import '../../../data/models/login/login_state_model.dart';
 import '../../../data/models/personalize/personalize_model.dart';
 import '../../../logic/cubit/login/login_cubit.dart';
+import '../../routes/route_names.dart';
 import '../../utils/constraints.dart';
 import '../../utils/k_images.dart';
 import '../../utils/utils.dart';
@@ -75,7 +76,7 @@ class _PersonalizeScreenState extends State<PersonalizeScreen> {
         padding: Utils.symmetric(v: 10.0),
         child: PrimaryButton(
           text: 'Continue',
-          onPressed: (){},
+          onPressed: ()=>Navigator.pushNamedAndRemoveUntil(context,RouteNames.mainScreen,(route)=>false),
         ),
       ),
     );

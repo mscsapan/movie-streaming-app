@@ -96,7 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 text: 'Login',
                 textColor: isValid ? whiteColor : grayColor,
                 bgColor: isValid ? primaryColor : whiteColor.withValues(alpha: 0.12),
-                onPressed: () {},
+                onPressed: () {
+                  if(isValid){
+                    Navigator.pushNamedAndRemoveUntil(context,RouteNames.mainScreen,(route)=>false);
+                  }
+                },
               ),
               Padding(
                 padding: Utils.symmetric(h: 0.0, v: 16.0),
