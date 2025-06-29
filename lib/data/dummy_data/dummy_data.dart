@@ -67,3 +67,9 @@ final List<PersonalizeModel> topCharts = [
   const PersonalizeModel(name: 'Soul', image: 'assets/images/chart03.png',rating: 8.4,year: 2016,duration: '1h 54m'),
   const PersonalizeModel(name: 'Brave', image: 'assets/images/chart04.png',rating: 8.4,year: 2016,duration: '1h 54m'),
 ];
+final List<PersonalizeModel> homeTopCharts = [
+  const PersonalizeModel(name: 'Dune', image: 'assets/images/chart05.png',rating: 8.9,year: 2021,duration: '2h 35m'),
+  const PersonalizeModel(name: 'Shang', image: 'assets/images/chart06.png',rating: 8.4,year: 2017,duration: '1h 54m'),
+  const PersonalizeModel(name: 'Soul', image: 'assets/images/chart05.png',rating: 8.9,year: 2016,duration: '1h 54m'),
+  const PersonalizeModel(name: 'Brave', image: 'assets/images/chart06.png',rating: 8.4,year: 2016,duration: '1h 54m'),
+];
