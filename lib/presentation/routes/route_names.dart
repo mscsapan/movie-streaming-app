@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/authentication/login_screen.dart';
 import '../screens/authentication/sign_up_screen.dart';
 import '../screens/personalize/personalize_screen.dart';
+import '../screens/top_chart/top_chart_screen.dart';
 import 'route_packages_name.dart';
 
 class RouteNames {
@@ -18,6 +19,7 @@ class RouteNames {
   static const String mainScreen = '/mainScreen';
   static const String homeScreen = '/homeScreen';
   static const String personalizeScreen = '/personalizeScreen';
+  static const String topChartScreen = '/topChartScreen';
 
   ///setting routes
   static const String privacyPolicyScreen = '/privacyPolicyScreen';
@@ -72,6 +74,10 @@ class RouteNames {
         case RouteNames.personalizeScreen:
         return MaterialPageRoute(
             settings: settings, builder: (_) => const PersonalizeScreen());
+
+        case RouteNames.topChartScreen:
+        return MaterialPageRoute(
+            settings: settings, builder: (_) => const TopChartScreen());
 
       // case RouteNames.profileScreen:
       //   return MaterialPageRoute(

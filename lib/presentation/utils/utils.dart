@@ -341,7 +341,7 @@ class Utils {
     return radius.sp;
   }
 
-  static BorderRadius borderRadius({double r = 10.0}) {
+  static BorderRadius borderRadius({double r = 4.0}) {
     return BorderRadius.circular(Utils.radius(r));
   }
 

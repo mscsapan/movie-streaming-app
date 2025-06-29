@@ -36,7 +36,7 @@ class MovieStreamingApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               onGenerateRoute: RouteNames.generateRoutes,
-              initialRoute: RouteNames.loginScreen,
+              initialRoute: RouteNames.mainScreen,
               theme: MyTheme.theme,
               onUnknownRoute: (RouteSettings settings) {
                 return MaterialPageRoute(

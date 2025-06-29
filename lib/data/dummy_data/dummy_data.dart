@@ -60,3 +60,10 @@ final List<PersonalizeModel> personalizes = [
   const PersonalizeModel(name: 'Thee Good Dinosaur', image: 'assets/images/p05.png',likes: 1423),
   const PersonalizeModel(name: 'Thee Good Dinosaur', image: 'assets/images/p06.png',likes: 1423),
 ];
+
+final List<PersonalizeModel> topCharts = [
+  const PersonalizeModel(name: 'Legend', image: 'assets/images/chart01.png',rating: 8.4,year: 2016,duration: '1h 54m'),
+  const PersonalizeModel(name: 'Thee Good Dinosaur', image: 'assets/images/chart02.png',rating: 8.4,year: 2016,duration: '1h 54m'),
+  const PersonalizeModel(name: 'Soul', image: 'assets/images/chart03.png',rating: 8.4,year: 2016,duration: '1h 54m'),
+  const PersonalizeModel(name: 'Brave', image: 'assets/images/chart04.png',rating: 8.4,year: 2016,duration: '1h 54m'),
+];

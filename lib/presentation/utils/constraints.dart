@@ -6,6 +6,7 @@ const whiteColor = Color(0xFFFFFFFF);
 const grayColor = Color(0xFF757575);
 const grayColor50 = Color(0xFFC2C2C2);
 const grayColor60 = Color(0xFF9E9E9E);
+const yellow = Color(0xFFFFBB38);
 
 const secondaryColor = Color(0xFFFE9900);
 Color hintTextColor = const Color(0xFF000000).withOpacity(0.2);

@@ -11,6 +11,7 @@ class KImages {
   static const String googleIcon = 'assets/icons/google_icon.svg';
   static const String likeUserIcon = 'assets/icons/like_user.svg';
   static const String checkDoneIcon = 'assets/icons/check-done.svg';
+  static const String playPauseIcon = 'assets/icons/play-pause.svg';
 
 
   static const String homeIcon = 'assets/icons/home.svg';
@@ -20,4 +21,7 @@ class KImages {
   static const String searchIcon = 'assets/icons/search.svg';
   static const String searchActiveIcon = 'assets/icons/search_active.svg';
   static const String account = 'assets/images/account.png';
+
+
+  static const String homeBanner = 'assets/images/home-banner.png';
 }

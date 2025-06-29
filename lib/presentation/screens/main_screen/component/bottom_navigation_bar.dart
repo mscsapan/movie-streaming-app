@@ -17,61 +17,52 @@ class MyBottomNavigationBar extends StatelessWidget {
     final controller = MainController();
     return Container(
       height: Platform.isAndroid ? 80 : 100,
-      decoration: const BoxDecoration(
-          color: whiteColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-          )),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: StreamBuilder(
-          initialData: 0,
-          stream: controller.naveListener.stream,
-          builder: (_, AsyncSnapshot<int> index) {
-            int selectedIndex = index.data ?? 0;
-            return BottomNavigationBar(
-              showUnselectedLabels: true,
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.white,
-              selectedLabelStyle:
-                  const TextStyle(fontSize: 14, color: blackColor),
-              unselectedLabelStyle:
-                  const TextStyle(fontSize: 14, color: grayColor),
-              items:  <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  tooltip: 'Home',
-                  icon: _navIcon(KImages.homeIcon),
-                  activeIcon: _navIcon(KImages.homeActiveIcon),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  tooltip: 'Favorite',
-                  icon: _navIcon(KImages.favoriteIcon),
-                  activeIcon: _navIcon(KImages.favoriteActiveIcon),
-                  label: 'Favorite',
-                ),
-                BottomNavigationBarItem(
-                  tooltip: 'Search',
-                  icon: _navIcon(KImages.searchIcon),
-                  activeIcon: _navIcon(KImages.searchActiveIcon),
-                  label: 'Search',
-                ),
-                const BottomNavigationBarItem(
-                  tooltip: 'Account',
-                  activeIcon: CustomImage(path: KImages.account,height: 40.0,width: 40.0,fit: BoxFit.cover,),
-                  icon: CustomImage(path: KImages.account,height: 40.0,width: 40.0,fit: BoxFit.cover,),
-                  label: 'Account',
-                ),
-              ],
-              // type: BottomNavigationBarType.fixed,
-              currentIndex: selectedIndex,
-              onTap: (int index) {
-                controller.naveListener.sink.add(index);
-              },
-            );
-          },
-        ),
+      decoration: const BoxDecoration(color: blackColor),
+      child: StreamBuilder(
+        initialData: 0,
+        stream: controller.naveListener.stream,
+        builder: (_, AsyncSnapshot<int> index) {
+          int selectedIndex = index.data ?? 0;
+          return BottomNavigationBar(
+            showUnselectedLabels: true,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: blackColor,
+            elevation: 0.0,
+            selectedLabelStyle: const TextStyle(fontSize: 14.0, color: whiteColor),
+            unselectedLabelStyle: const TextStyle(fontSize: 14.0, color: grayColor),
+            items:  <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                tooltip: 'Home',
+                icon: _navIcon(KImages.homeIcon),
+                activeIcon: _navIcon(KImages.homeActiveIcon),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                tooltip: 'Favorite',
+                icon: _navIcon(KImages.favoriteIcon),
+                activeIcon: _navIcon(KImages.favoriteActiveIcon),
+                label: 'Favorite',
+              ),
+              BottomNavigationBarItem(
+                tooltip: 'Search',
+                icon: _navIcon(KImages.searchIcon),
+                activeIcon: _navIcon(KImages.searchActiveIcon),
+                label: 'Search',
+              ),
+              const BottomNavigationBarItem(
+                tooltip: 'Account',
+                activeIcon: CustomImage(path: KImages.account,height: 40.0,width: 40.0,fit: BoxFit.cover,),
+                icon: CustomImage(path: KImages.account,height: 40.0,width: 40.0,fit: BoxFit.cover,),
+                label: 'Account',
+              ),
+            ],
+            // type: BottomNavigationBarType.fixed,
+            currentIndex: selectedIndex,
+            onTap: (int index) {
+              controller.naveListener.sink.add(index);
+            },
+          );
+        },
       ),
     );
   }

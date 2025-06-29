@@ -60,8 +60,8 @@ class MyTheme {
             padding: WidgetStatePropertyAll(EdgeInsets.zero)),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        elevation: 3,
-        backgroundColor: whiteColor,
+        elevation: 0,
+        backgroundColor: blackColor,
         showUnselectedLabels: true,
         selectedLabelStyle: TextStyle(
           fontWeight: FontWeight.w600,
@@ -74,7 +74,7 @@ class MyTheme {
           fontSize: 14.0,
           fontFamily: 'HelveticaNeueMedium',
         ),
-        selectedItemColor: primaryColor,
+        selectedItemColor: whiteColor,
         unselectedItemColor: grayColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
